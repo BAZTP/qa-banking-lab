@@ -1,0 +1,54 @@
+@base = http://127.0.0.1:8080
+
+### Salud — esperar 200
+GET {{base}}/api/health
+Content-Type: application/json
+X-Lab-Request: 1
+
+### Login demo — esperar 200
+POST {{base}}/api/login
+Content-Type: application/json
+X-Lab-Request: 1
+
+{"username": "ana", "password": "Demo123!"}
+
+### Cuentas propias — esperar 200
+GET {{base}}/api/accounts
+Content-Type: application/json
+X-Lab-Request: 1
+
+### Retiro válido — esperar 201
+POST {{base}}/api/withdrawals
+Content-Type: application/json
+X-Lab-Request: 1
+
+{"source": "LAB-ANA-01", "amount": "50.00"}
+
+### Transferencia válida — esperar 201
+POST {{base}}/api/transfers
+Content-Type: application/json
+X-Lab-Request: 1
+
+{"source": "LAB-ANA-01", "destination": "LAB-ANA-02", "amount": "10.25", "note": "Práctica Postman"}
+
+### Saldo insuficiente — esperar 409
+POST {{base}}/api/withdrawals
+Content-Type: application/json
+X-Lab-Request: 1
+
+{"source": "LAB-ANA-01", "amount": "1000000"}
+
+### Historial — esperar 200
+GET {{base}}/api/history
+Content-Type: application/json
+X-Lab-Request: 1
+
+### Cerrar sesión — esperar 200
+POST {{base}}/api/logout
+Content-Type: application/json
+X-Lab-Request: 1
+
+### Sin sesión — esperar 401
+GET {{base}}/api/accounts
+Content-Type: application/json
+X-Lab-Request: 1

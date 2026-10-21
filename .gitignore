@@ -9,3 +9,6 @@ htmlcov/
 test-results/
 playwright-report/
 .env
+target/
+*.mv.db
+*.trace.db

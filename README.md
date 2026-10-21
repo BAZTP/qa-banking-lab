@@ -1,5 +1,7 @@
 # QA Banking Lab
 
+**Nuevo: [Mini Banca Java](java-bank/README.md)** con Spring Boot, retiros, transferencias, login, saldo, historial, JUnit/REST Assured y modo de entrenamiento aislado con bugs intencionales. Sigue su guía para Windows 11 y Postman. El módulo Python de esta página sigue disponible.
+
 Laboratorio educativo para aprender a **pensar y trabajar como QA tester**: Python 3.12, FastAPI, SQLite y frontend HTML/CSS/JavaScript sin compilación. MVP con login de demostración, cuentas ficticias, saldos, transferencias simuladas e historial persistente.
 
 **Todo es ficticio.** No conecta con bancos, no mueve dinero, no necesita secretos. Las credenciales publicadas son parte del ejercicio. No uses datos personales, contraseñas reales ni información bancaria. Ejecútalo localmente; no es un sistema financiero de producción.
