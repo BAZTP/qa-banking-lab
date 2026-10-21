@@ -1,0 +1,10 @@
+[
+  {"amount":"0.01", "status":201, "balance":"999.99"},
+  {"amount":"10.25", "status":201, "balance":"989.75"},
+  {"amount":"1000.00", "status":201, "balance":"0.00"},
+  {"amount":"1000.01", "status":409, "balance":"1000.00"},
+  {"amount":"0", "status":422, "balance":"1000.00"},
+  {"amount":"-10", "status":422, "balance":"1000.00"},
+  {"amount":"1.001", "status":422, "balance":"1000.00"},
+  {"amount":"NaN", "status":422, "balance":"1000.00"}
+]
