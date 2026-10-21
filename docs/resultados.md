@@ -24,7 +24,7 @@ Los XML de la ejecución local se generaron en `/tmp/qa-api-results.xml` y `/tmp
 ## Restricciones observadas
 
 - La descarga del Chromium administrado por Playwright devolvió `403 Domain forbidden`. Se utilizó el Chromium existente mediante la opción documentada; no se desactivó TLS ni se alteraron verificaciones.
-- Las consultas de `gh` a `api.github.com` devolvieron `Forbidden` por la red del entorno. La lectura y el push Git HTTPS sí funcionan. La creación del pull request queda pendiente si persiste esa restricción; el cuerpo está preparado en `docs/pull-request.md`.
+- Las consultas REST iniciales de `gh` a `api.github.com` devolvieron `Forbidden`. La lectura y el push Git HTTPS funcionaron, y la operación posterior `gh pr create` sí completó la creación de [PR #1](https://github.com/BAZTP/qa-banking-lab/pull/1), de `feat/qa-banking-lab-mvp` a `main`. No hizo falta solicitar otro token. El cuerpo del PR está en `docs/pull-request.md`.
 - Se guardaron en el borrador del entorno `install_script`, `start_skill` y los dominios adicionales `cdn.playwright.dev`, `playwright.download.prss.microsoft.com`, `cdn.playwright.download.prss.microsoft.com` y `api.github.com`. Guardar el borrador no aplica ni publica la configuración; se revisa, guarda y publica desde los ajustes del entorno.
 - Aviso de deprecación de Starlette/AnyIO (`BlockingPortal`) durante pytest; no produjo errores. No se ocultó.
 - No ejecutados: casos manuales completos, Windows 11, Firefox/WebKit, carga, auditoría ZAP/Burp, auditoría de accesibilidad o experimento A/B. Están diferenciados como actividades futuras.
