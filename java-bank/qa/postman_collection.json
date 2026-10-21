@@ -1,0 +1,303 @@
+{
+  "info": {
+    "name": "Mini Banca Java · QA educativo",
+    "description": "Ejecutar en orden contra instancia normal local; solo datos ficticios. No ejecutar colección varias veces esperando saldos iniciales: las operaciones persisten. Los casos de bugs se hacen manualmente contra training.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://127.0.0.1:8080"
+    }
+  ],
+  "item": [
+    {
+      "name": "Salud",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "X-Lab-Request",
+            "value": "1"
+          }
+        ],
+        "url": "{{baseUrl}}/api/health"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Estado esperado: 200\", () => pm.response.to.have.status(200));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Login demo",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "X-Lab-Request",
+            "value": "1"
+          }
+        ],
+        "url": "{{baseUrl}}/api/login",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"username\": \"ana\", \"password\": \"Demo123!\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Estado esperado: 200\", () => pm.response.to.have.status(200));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Cuentas propias",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "X-Lab-Request",
+            "value": "1"
+          }
+        ],
+        "url": "{{baseUrl}}/api/accounts"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Estado esperado: 200\", () => pm.response.to.have.status(200));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Retiro válido",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "X-Lab-Request",
+            "value": "1"
+          }
+        ],
+        "url": "{{baseUrl}}/api/withdrawals",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"source\": \"LAB-ANA-01\", \"amount\": \"50.00\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Estado esperado: 201\", () => pm.response.to.have.status(201));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Transferencia válida",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "X-Lab-Request",
+            "value": "1"
+          }
+        ],
+        "url": "{{baseUrl}}/api/transfers",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"source\": \"LAB-ANA-01\", \"destination\": \"LAB-ANA-02\", \"amount\": \"10.25\", \"note\": \"Práctica Postman\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Estado esperado: 201\", () => pm.response.to.have.status(201));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Saldo insuficiente",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "X-Lab-Request",
+            "value": "1"
+          }
+        ],
+        "url": "{{baseUrl}}/api/withdrawals",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"source\": \"LAB-ANA-01\", \"amount\": \"1000000\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Estado esperado: 409\", () => pm.response.to.have.status(409));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Historial",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "X-Lab-Request",
+            "value": "1"
+          }
+        ],
+        "url": "{{baseUrl}}/api/history"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Estado esperado: 200\", () => pm.response.to.have.status(200));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Cerrar sesión",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "X-Lab-Request",
+            "value": "1"
+          }
+        ],
+        "url": "{{baseUrl}}/api/logout"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Estado esperado: 200\", () => pm.response.to.have.status(200));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Sin sesión",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "X-Lab-Request",
+            "value": "1"
+          }
+        ],
+        "url": "{{baseUrl}}/api/accounts"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Estado esperado: 401\", () => pm.response.to.have.status(401));"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
