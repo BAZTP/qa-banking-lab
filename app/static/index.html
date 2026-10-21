@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>QA Banking Lab · Laboratorio de testing</title>
+  <link rel="stylesheet" href="/static/style.css"><script src="/static/app.js" defer></script>
+</head>
+<body>
+  <header><a href="/" class="brand">◈ QA Banking Lab</a><span class="badge">EDUCATIVO · SIN DINERO REAL</span></header>
+  <main>
+    <section class="intro"><p class="eyebrow">APRENDE EXPLORANDO</p><h1>Tu primer laboratorio<br>de calidad de software.</h1><p>Observa, prueba y descubre. Cada operación es una oportunidad para aprender QA.</p></section>
+    <p id="message" role="status" aria-live="polite"></p>
+    <section id="login-panel" class="card login">
+      <div><p class="eyebrow">01 / COMIENZA AQUÍ</p><h2>Inicia una sesión de práctica</h2><p>Usuarios ficticios: <strong>ana</strong> o <strong>bruno</strong><br>Contraseña pública para ambos: <strong>Demo123!</strong></p><p>Todos los importes usan USD-DEMO. Nunca introduzcas datos reales.</p></div>
+      <form id="login-form"><label for="username">Usuario de demostración</label><input id="username" autocomplete="username" required maxlength="50"><label for="password">Contraseña de demostración</label><input id="password" type="password" autocomplete="current-password" required maxlength="128"><button>Entrar al laboratorio</button></form>
+    </section>
+    <section id="dashboard" hidden>
+      <div class="section-title"><h2>Mis cuentas ficticias</h2><button id="logout" class="secondary">Cerrar sesión</button></div>
+      <div id="accounts" class="accounts"></div>
+      <div class="columns">
+        <section class="card"><p class="eyebrow">02 / EXPERIMENTA</p><h2>Transferencia simulada</h2>
+          <form id="transfer-form"><label for="source">Cuenta de origen</label><select id="source" required></select><label for="destination">Cuenta de destino ficticia</label><input id="destination" placeholder="LAB-ANA-02 o LAB-BRU-01" required maxlength="40"><label for="amount">Importe (USD-DEMO)</label><input id="amount" type="number" min="0.01" max="1000000" step="0.01" required><label for="note">Concepto (opcional)</label><input id="note" maxlength="140"><button id="transfer-button">Simular transferencia</button></form>
+        </section>
+        <section class="card"><p class="eyebrow">03 / VERIFICA</p><h2>Historial de operaciones</h2><p>Incluye transferencias enviadas y recibidas.</p><div class="table-wrap"><table><thead><tr><th>Ruta</th><th>Importe</th><th>Concepto / fecha UTC</th></tr></thead><tbody id="history"></tbody></table></div></section>
+      </div>
+    </section>
+    <aside class="learning"><h2>Tu siguiente misión</h2><p>Prueba un login incorrecto, transfiere 10.25 y comprueba ambos saldos. Después intenta transferir más de lo disponible: ¿se conservan el saldo y el historial?</p><p>Consulta las actividades, casos manuales y la matriz de testing en el README del proyecto.</p></aside>
+  </main><footer>QA Banking Lab · Datos inventados · Práctica local · v0.1</footer>
+</body></html>

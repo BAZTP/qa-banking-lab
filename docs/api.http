@@ -1,0 +1,35 @@
+### Archivo compatible con REST Client de VS Code; mantiene cookies si están habilitadas.
+### Solo datos de demostración; iniciar Uvicorn local antes de usar.
+@base = http://127.0.0.1:8000
+
+GET {{base}}/api/health
+
+### Login
+POST {{base}}/api/login
+Content-Type: application/json
+
+{"username":"ana","password":"Demo123!"}
+
+### Cuentas propias (cookie de la respuesta anterior)
+GET {{base}}/api/accounts
+
+### Transferencia simulada
+POST {{base}}/api/transfers
+Content-Type: application/json
+X-Lab-Request: 1
+
+{"source":"LAB-ANA-01","destination":"LAB-ANA-02","amount":"10.25","note":"Ejercicio manual API"}
+
+### Negativo: no debe modificar estado
+POST {{base}}/api/transfers
+Content-Type: application/json
+X-Lab-Request: 1
+
+{"source":"LAB-ANA-01","destination":"LAB-ANA-02","amount":"-1"}
+
+### Historial
+GET {{base}}/api/transfers
+
+### Logout
+POST {{base}}/api/logout
+X-Lab-Request: 1
