@@ -19,7 +19,7 @@ Entorno realmente ejecutado: Debian 13, Python 3.12.14, pytest 8.3.5, FastAPI 0.
 
 La suite rápida verifica transferencias atómicas, conservación de saldos, origen propio, recepción por otro usuario, invisibilidad de operaciones internas ajenas, importes límite, entrada maliciosa en login, cabecera de protección, cierre de sesión, persistencia y rechazo de sesiones antiguas tras reiniciar. La concurrencia prueba dos débitos de 600 contra saldo 1000: uno se acepta y el otro se rechaza, sin sobregiro.
 
-Los XML de la ejecución local se generaron en `/tmp/qa-api-results.xml` y `/tmp/qa-e2e-results.xml`; son artefactos de esta máquina. CI está configurada para generar y subir sus propios XML, cobertura y trazas. **La ejecución remota de GitHub Actions aún no se ha verificado**; no se atribuyen estos resultados locales a CI.
+Los XML de la ejecución local se generaron en `/tmp/qa-api-results.xml` y `/tmp/qa-e2e-results.xml`; son artefactos de esta máquina. CI genera y sube sus propios XML, cobertura y trazas. También se verificó la ejecución remota: los jobs **api y e2e finalizaron correctamente** en [GitHub Actions, ejecución 39648578457](https://github.com/BAZTP/qa-banking-lab/actions/runs/39648578457), para el commit `3a73c3817566d3f5b978041ee457e4051de37c86`. Los números de la tabla corresponden a la ejecución local, no se infieren de un estado verde remoto. Consulta el PR para el estado de commits posteriores.
 
 ## Restricciones observadas
 
